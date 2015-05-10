@@ -8,24 +8,62 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   <style media="screen">
+	html {
+	  box-sizing: border-box;
+	}
+	*, *:before, *:after {
+	  box-sizing: inherit;
+	}
+
+	body {
+		margin: 5%;
+		font-size: 16px;
+	}
+
+	input[type="number"],
+	input[type="button"]{
+		/*display: block;*/
+		/*width: 100%;*/
+		margin-bottom: 1em;
+		font-size: 16px;
+	}
 
   </style>
 
 </head>
 <body>
-  <input type="text" name="small-count" id="small-count" value="1" placeholder="0">
-  <input type="text" name="medium-count" id="medium-count" value="0" placeholder="0">
-  <input type="text" name="large-count" id="large-count" value="0" placeholder="0">
+  <input type="number" name="small-count" id="small-count" value="" placeholder="Small Plates">
+	<input type="button" name="+" value="+" id="small-inc">
+	<input type="button" name="-" value="-" id="small-dec">
 
-  <p id="result">Result</p>
+  <input type="number" name="medium-count" id="medium-count" value="" placeholder="Medium Plates">
+	<input type="button" name="+" value="+" id="medium-inc">
+	<input type="button" name="-" value="-" id="medium-dec">
 
+  <input type="number" name="large-count" id="large-count" value="" placeholder="Large Plates">
+	<input type="button" name="+" value="+" id="large-inc">
+	<input type="button" name="-" value="-" id="large-dec">
+
+  <p id="result"></p>
 
   <script type="text/javascript">
     var anyInput      = document.querySelector('input');
+
     var smallCount    = document.getElementById("small-count");
+    var smallInc    	= document.getElementById("small-inc");
+    var smallDec    	= document.getElementById("small-dec");
+
     var mediumCount   = document.getElementById("medium-count");
+		var mediumInc    	= document.getElementById("medium-inc");
+    var mediumDec    	= document.getElementById("medium-dec");
+
     var largeCount    = document.getElementById("large-count");
+		var largeInc    	= document.getElementById("large-inc");
+    var largeDec    	= document.getElementById("large-dec");
+
     var resultEl      = document.getElementById("result");
+
+		smallCount.focus()
 
     var barWeight     = 1.8 // including locknuts
     var smallWeight   = 1.4 // 3lbs
@@ -33,24 +71,93 @@
     var largeWeight   = 4.6 // 10lbs
 
     function math() {
-      resultEl.innerHTML = ((smallWeight * smallCount.value) + (mediumWeight * mediumCount.value) + (largeWeight * largeCount.value) + barWeight) * 2
+			var singleDumbbell = ((smallWeight * smallCount.value) + (mediumWeight * mediumCount.value) + (largeWeight * largeCount.value) + barWeight)
+			var twoDumbbells = singleDumbbell * 2
+
+			if (smallCount.value == 0 && mediumCount.value == 0 && largeCount.value == 0) {
+				resultEl.innerHTML = ""
+			} else {
+				resultEl.innerHTML = "Single: " + roundToTwoDecimalPlaces(singleDumbbell) + "kg" + " Both: " + roundToTwoDecimalPlaces(twoDumbbells) + "kg"
+			}
     }
+
+		function roundToTwoDecimalPlaces(num) {
+			return Math.round(num * 10) / 10
+		}
 
     smallCount.addEventListener('input', function(){
       math();
+    });
+
+		smallInc.addEventListener('click', function(){
+			if (smallCount.value == 0) {
+				smallCount.value = 1
+			} else {
+				smallCount.value = parseInt(smallCount.value) + 1
+			}
+
+			math();
+    });
+
+		smallDec.addEventListener('click', function(){
+			if (smallCount.value == 0) {
+				smallCount.value = 0
+			} else {
+				smallCount.value = parseInt(smallCount.value) - 1
+			}
+
+			math();
     });
 
     mediumCount.addEventListener('input', function(){
       math();
     });
 
+		mediumInc.addEventListener('click', function(){
+			if (mediumCount.value == 0) {
+				mediumCount.value = 1
+			} else {
+				mediumCount.value = parseInt(mediumCount.value) + 1
+			}
+
+			math();
+    });
+
+		mediumDec.addEventListener('click', function(){
+			if (mediumCount.value == 0) {
+				mediumCount.value = 0
+			} else {
+				mediumCount.value = parseInt(mediumCount.value) - 1
+			}
+
+			math();
+    });
+
     largeCount.addEventListener('input', function(){
       math();
     });
 
-    console.log(
-      smallCount.value
-    )
+		largeInc.addEventListener('click', function(){
+			if (largeCount.value == 0) {
+				largeCount.value = 1
+			} else {
+				largeCount.value = parseInt(largeCount.value) + 1
+			}
+
+			math();
+    });
+
+		largeDec.addEventListener('click', function(){
+			if (largeCount.value == 0) {
+				largeCount.value = 0
+			} else {
+				largeCount.value = parseInt(largeCount.value) - 1
+			}
+
+			math();
+    });
+
+		math();
 
   </script>
 </body>
