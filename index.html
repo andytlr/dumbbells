@@ -20,29 +20,42 @@
 		font-size: 16px;
 	}
 
-	input[type="number"],
-	input[type="button"]{
+	input {
 		/*display: block;*/
 		/*width: 100%;*/
-		margin-bottom: 1em;
 		font-size: 16px;
+	}
+
+	input[type="button"] {
+		/*float: right;*/
+	}
+
+	.input-container {
+		display: block;
+		margin-bottom: 1em;
 	}
 
   </style>
 
 </head>
 <body>
-  <input type="number" name="small-count" id="small-count" value="" placeholder="Small Plates">
-	<input type="button" name="+" value="+" id="small-inc">
-	<input type="button" name="-" value="-" id="small-dec">
+	<div class="input-container">
+	  <input type="number" name="small-count" id="small-count" value="" placeholder="Small Plates">
+		<input type="button" name="+" value="+" id="small-inc">
+		<input type="button" name="-" value="-" id="small-dec">
+	</div>
 
-  <input type="number" name="medium-count" id="medium-count" value="" placeholder="Medium Plates">
-	<input type="button" name="+" value="+" id="medium-inc">
-	<input type="button" name="-" value="-" id="medium-dec">
+	<div class="input-container">
+	  <input type="number" name="medium-count" id="medium-count" value="" placeholder="Medium Plates">
+		<input type="button" name="+" value="+" id="medium-inc">
+		<input type="button" name="-" value="-" id="medium-dec">
+	</div>
 
-  <input type="number" name="large-count" id="large-count" value="" placeholder="Large Plates">
-	<input type="button" name="+" value="+" id="large-inc">
-	<input type="button" name="-" value="-" id="large-dec">
+	<div class="input-container">
+	  <input type="number" name="large-count" id="large-count" value="" placeholder="Large Plates">
+		<input type="button" name="+" value="+" id="large-inc">
+		<input type="button" name="-" value="-" id="large-dec">
+	</div>
 
   <p id="result"></p>
 
