@@ -18,12 +18,10 @@
 	body {
 		margin: 5%;
 		font-size: 16px;
+		line-height: 20px;
 		font-family: "Helvetica Neue", Helvetica, sans-serif;
-	}
-
-	input {
-		width: 100%;
-		font-size: 16px;
+		-webkit-font-smoothing: antialiased;
+		-webkit-user-select: none;
 	}
 
 	.input-container,
@@ -32,6 +30,7 @@
 		margin-bottom: 5%;
 		width: 100%;
 		display: table;
+		table-layout: fixed;
 		border: 1px solid #dadada;
 		border-radius: 5px;
 	}
@@ -50,9 +49,9 @@
 
 	.button {
 		padding: 20px 0;
-		-webkit-font-smoothing: antialiased;
-		-webkit-user-select: none;
 		user-select: none;
+		color: blue;
+		cursor: pointer;
 	}
 
 	.result-holder {
@@ -61,8 +60,18 @@
 		display: table-cell;
 	}
 
+	#result-empty {
+		color: #999;
+		font-size: 0.8em;
+		line-height: 20px;
+	}
+
+	#result-double {
+		border-left: 1px solid #dadada;
+	}
+
 	.hidden {
-		display: hidden !important;
+		display: none !important;
 	}
 
   </style>
@@ -122,13 +131,17 @@
 			var twoDumbbells = singleDumbbell * 2
 
 			if (smallCount.innerHTML == 0 && mediumCount.innerHTML == 0 && largeCount.innerHTML == 0) {
-				resultEmptyEl.innerHTML = "Each dumbell weighs " + barWeight + "kg"
-				resultSingleEl.innerHTML = ""
-				resultDoubleEl.innerHTML = ""
+				resultEmptyEl.innerHTML = "Each dumbbell weighs " + barWeight + "kg. Counts are for each side of single dumbbell."
+				resultEmptyEl.classList.remove("hidden");
+
+				resultSingleEl.classList.add("hidden");
+				resultDoubleEl.classList.add("hidden");
 			} else {
-				resultEmptyEl.innerHTML = ""
-				resultSingleEl.innerHTML = "Single: " + roundToTwoDecimalPlaces(singleDumbbell) + "kg"
-				resultDoubleEl.innerHTML = "Both: " + roundToTwoDecimalPlaces(twoDumbbells) + "kg"
+				resultEmptyEl.classList.add("hidden");
+				resultSingleEl.classList.remove("hidden");
+				resultDoubleEl.classList.remove("hidden");
+				resultSingleEl.innerHTML = "Single " + roundToTwoDecimalPlaces(singleDumbbell) + "kg"
+				resultDoubleEl.innerHTML = "Both " + roundToTwoDecimalPlaces(twoDumbbells) + "kg"
 			}
     }
 
@@ -156,10 +169,6 @@
 			math();
     });
 
-    mediumCount.addEventListener('input', function(){
-      math();
-    });
-
 		mediumInc.addEventListener('click', function(){
 			if (mediumCount.innerHTML == 0) {
 				mediumCount.innerHTML = 1
@@ -178,10 +187,6 @@
 			}
 
 			math();
-    });
-
-    largeCount.addEventListener('input', function(){
-      math();
     });
 
 		largeInc.addEventListener('click', function(){
