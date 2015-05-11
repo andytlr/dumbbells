@@ -154,9 +154,9 @@
 
   <script type="text/javascript">
 		var barWeight     = 1.8 // including locknuts
-		var smallWeight   = 1.4 // 3lbs
-		var mediumWeight  = 2.3 // 5lbs
-		var largeWeight   = 4.6 // 10lbs
+		var smallWeight   = 1.36 // 3lbs
+		var mediumWeight  = 2.26 // 5lbs
+		var largeWeight   = 4.53 // 10lbs
 
     var smallCount    = document.getElementById("small-count");
     var smallInc    	= document.getElementById("small-inc");
@@ -174,7 +174,7 @@
     var resultSingleEl	= document.getElementById("result-single");
     var resultDoubleEl	= document.getElementById("result-double");
 
-		function roundToTwoDecimalPlaces(num) {
+		function roundToOneDecimalPlace(num) {
 			return Math.round(num * 10) / 10
 		}
 
@@ -196,8 +196,8 @@
 				resultEmptyEl.classList.add("hidden");
 				resultSingleEl.classList.remove("hidden");
 				resultDoubleEl.classList.remove("hidden");
-				resultSingleEl.innerHTML = "Single " + roundToPointFive(singleDumbbell) + "kg"
-				resultDoubleEl.innerHTML = "Both " + roundToPointFive(twoDumbbells) + "kg"
+				resultSingleEl.innerHTML = "One: " + roundToPointFive(singleDumbbell) + "kg (" + roundToOneDecimalPlace(singleDumbbell) + "kg)"
+				resultDoubleEl.innerHTML = "Two: " + roundToPointFive(twoDumbbells) + "kg (" + roundToOneDecimalPlace(twoDumbbells) + "kg)"
 			}
     }
 
