@@ -18,21 +18,31 @@
 	body {
 		margin: 5%;
 		font-size: 16px;
+		font-family: "Helvetica Neue", Helvetica, sans-serif;
 	}
 
 	input {
-		/*display: block;*/
-		/*width: 100%;*/
+		width: 100%;
 		font-size: 16px;
 	}
 
+	input[type="number"] {
+		width: 95%;
+	}
+
 	input[type="button"] {
-		/*float: right;*/
+
 	}
 
 	.input-container {
-		display: block;
+		/*display: block;*/
 		margin-bottom: 1em;
+		width: 100%;
+		display: table;
+	}
+
+	.input-holder {
+		display: table-cell;
 	}
 
   </style>
@@ -40,21 +50,21 @@
 </head>
 <body>
 	<div class="input-container">
-	  <input type="number" name="small-count" id="small-count" value="" placeholder="Small Plates">
-		<input type="button" name="+" value="+" id="small-inc">
-		<input type="button" name="-" value="-" id="small-dec">
+		<div class="input-holder"><input type="number" name="small-count" id="small-count" value="" placeholder="Small Plates"></div>
+		<div class="input-holder"><input type="button" name="+" value="+" id="small-inc"></div>
+		<div class="input-holder"><input type="button" name="-" value="–" id="small-dec"></div>
 	</div>
 
 	<div class="input-container">
-	  <input type="number" name="medium-count" id="medium-count" value="" placeholder="Medium Plates">
-		<input type="button" name="+" value="+" id="medium-inc">
-		<input type="button" name="-" value="-" id="medium-dec">
+		<div class="input-holder"><input type="number" name="medium-count" id="medium-count" value="" placeholder="Medium Plates"></div>
+		<div class="input-holder"><input type="button" name="+" value="+" id="medium-inc"></div>
+		<div class="input-holder"><input type="button" name="-" value="–" id="medium-dec"></div>
 	</div>
 
 	<div class="input-container">
-	  <input type="number" name="large-count" id="large-count" value="" placeholder="Large Plates">
-		<input type="button" name="+" value="+" id="large-inc">
-		<input type="button" name="-" value="-" id="large-dec">
+		<div class="input-holder"><input type="number" name="large-count" id="large-count" value="" placeholder="Large Plates"></div>
+		<div class="input-holder"><input type="button" name="+" value="+" id="large-inc"></div>
+		<div class="input-holder"><input type="button" name="-" value="–" id="large-dec"></div>
 	</div>
 
   <p id="result"></p>
