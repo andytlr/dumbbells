@@ -60,6 +60,7 @@
 		user-select: none;
 		color: blue;
 		cursor: pointer;
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
 	}
 
 	.result-holder {
@@ -139,7 +140,7 @@
 			var twoDumbbells = singleDumbbell * 2
 
 			if (smallCount.innerHTML == 0 && mediumCount.innerHTML == 0 && largeCount.innerHTML == 0) {
-				resultEmptyEl.innerHTML = "Each dumbbell weighs " + barWeight + "kg. Counts are for each side of single dumbbell."
+				resultEmptyEl.innerHTML = "Each bar weighs " + barWeight + "kg. Counts are for each side of single bar."
 				resultEmptyEl.classList.remove("hidden");
 
 				resultSingleEl.classList.add("hidden");
