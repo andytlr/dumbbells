@@ -188,13 +188,17 @@
 				resultEmptyEl.classList.add("hidden");
 				resultSingleEl.classList.remove("hidden");
 				resultDoubleEl.classList.remove("hidden");
-				resultSingleEl.innerHTML = "Single " + roundToTwoDecimalPlaces(singleDumbbell) + "kg"
-				resultDoubleEl.innerHTML = "Both " + roundToTwoDecimalPlaces(twoDumbbells) + "kg"
+				resultSingleEl.innerHTML = "Single " + roundToPointFive(singleDumbbell) + "kg"
+				resultDoubleEl.innerHTML = "Both " + roundToPointFive(twoDumbbells) + "kg"
 			}
     }
 
 		function roundToTwoDecimalPlaces(num) {
 			return Math.round(num * 10) / 10
+		}
+
+		function roundToPointFive(num) {
+			return Math.round(num * 2) / 2;
 		}
 
 		smallInc.addEventListener('click', function(){
