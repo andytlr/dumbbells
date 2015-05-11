@@ -9,7 +9,7 @@
 	<link rel="apple-touch-icon-precomposed" href="img/icon.png"/>
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	
+
 	<script type='application/javascript' src='vendor/fastclick.min.js'></script>
 	<script type="text/javascript">
 	if ('addEventListener' in document) {
@@ -38,12 +38,11 @@
 
 	.input-container,
 	.result-container {
-		/*display: block;*/
 		margin-bottom: 5%;
 		width: 100%;
 		display: table;
 		table-layout: fixed;
-		border: 1px solid #dadada;
+		border: 1px solid #eee;
 		border-radius: 5px;
 	}
 
@@ -56,7 +55,7 @@
 		display: table-cell;
 		width: 25%;
 		text-align: center;
-		border-left: 1px solid #dadada;
+		border-left: 1px solid #eee;
 	}
 
 	.button {
@@ -80,11 +79,22 @@
 	}
 
 	#result-double {
-		border-left: 1px solid #dadada;
+		border-left: 1px solid #eee;
 	}
 
 	.hidden {
 		display: none !important;
+	}
+
+	.preset {
+		cursor: pointer;
+		background: #fbfbfb;
+		border: 1px solid #eee;
+		text-align: center;
+		border-radius: 5px;
+		padding: 10px;
+		color: #555;
+		margin-bottom: 5%;
 	}
 
   </style>
@@ -113,6 +123,33 @@
 		<div class="result-holder" id="result-empty"></div>
 		<div class="result-holder" id="result-single"></div>
 		<div class="result-holder" id="result-double"></div>
+	</div>
+
+	<div class="presets">
+		<p onclick="smallCount.innerHTML = 0, mediumCount.innerHTML = 0, largeCount.innerHTML = 1, math()" class="preset">
+			1 large
+		</p>
+		<p onclick="smallCount.innerHTML = 1, mediumCount.innerHTML = 2, largeCount.innerHTML = 0, math()" class="preset">
+			1 small, 2 medium
+		</p>
+		<p onclick="smallCount.innerHTML = 0, mediumCount.innerHTML = 1, largeCount.innerHTML = 1, math()" class="preset">
+			1 medium, 1 large
+		</p>
+		<p onclick="smallCount.innerHTML = 0, mediumCount.innerHTML = 2, largeCount.innerHTML = 1, math()" class="preset">
+			2 medium, 1 large
+		</p>
+		<p onclick="smallCount.innerHTML = 1, mediumCount.innerHTML = 2, largeCount.innerHTML = 1, math()" class="preset">
+			1 small, 2 medium, 1 large
+		</p>
+		<p onclick="smallCount.innerHTML = 0, mediumCount.innerHTML = 3, largeCount.innerHTML = 1, math()" class="preset">
+			3 medium, 1 large
+		</p>
+		<p onclick="smallCount.innerHTML = 1, mediumCount.innerHTML = 3, largeCount.innerHTML = 1, math()" class="preset">
+			1 small, 3 medium, 1 large
+		</p>
+		<p onclick="smallCount.innerHTML = 0, mediumCount.innerHTML = 0, largeCount.innerHTML = 0, math()" class="preset">
+			Reset
+		</p>
 	</div>
 
   <script type="text/javascript">
