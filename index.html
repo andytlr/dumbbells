@@ -88,19 +88,19 @@
 </head>
 <body>
 	<div class="input-container">
-		<div class="input-holder--text"><div>Small: <span id="small-count">0</span></div></div>
+		<div class="input-holder--text"><div><span id="small-count">0</span> small</div></div>
 		<div class="input-holder--button"><div class="button" id="small-inc">+</div></div>
 		<div class="input-holder--button"><div class="button" id="small-dec">–</div></div>
 	</div>
 
 	<div class="input-container">
-		<div class="input-holder--text"><div>Medium: <span id="medium-count">0</span></div></div>
+		<div class="input-holder--text"><div><span id="medium-count">0</span> medium</div></div>
 		<div class="input-holder--button"><div class="button" id="medium-inc">+</div></div>
 		<div class="input-holder--button"><div class="button" id="medium-dec">–</div></div>
 	</div>
 
 	<div class="input-container">
-		<div class="input-holder--text"><div>Large: <span id="large-count">0</span></div></div>
+		<div class="input-holder--text"><div><span id="large-count">0</span> large</div></div>
 		<div class="input-holder--button"><div class="button" id="large-inc">+</div></div>
 		<div class="input-holder--button"><div class="button" id="large-dec">–</div></div>
 	</div>
@@ -112,7 +112,10 @@
 	</div>
 
   <script type="text/javascript">
-    var anyInput      = document.querySelector('input');
+		var barWeight     = 1.8 // including locknuts
+		var smallWeight   = 1.4 // 3lbs
+		var mediumWeight  = 2.3 // 5lbs
+		var largeWeight   = 4.6 // 10lbs
 
     var smallCount    = document.getElementById("small-count");
     var smallInc    	= document.getElementById("small-inc");
@@ -130,17 +133,12 @@
     var resultSingleEl	= document.getElementById("result-single");
     var resultDoubleEl	= document.getElementById("result-double");
 
-    var barWeight     = 1.8 // including locknuts
-    var smallWeight   = 1.4 // 3lbs
-    var mediumWeight  = 2.3 // 5lbs
-    var largeWeight   = 4.6 // 10lbs
-
     function math() {
 			var singleDumbbell = ((smallWeight * smallCount.innerHTML) + (mediumWeight * mediumCount.innerHTML) + (largeWeight * largeCount.innerHTML) + barWeight)
 			var twoDumbbells = singleDumbbell * 2
 
 			if (smallCount.innerHTML == 0 && mediumCount.innerHTML == 0 && largeCount.innerHTML == 0) {
-				resultEmptyEl.innerHTML = "Each bar weighs " + barWeight + "kg. Counts are for each side of single bar."
+				resultEmptyEl.innerHTML = "Each bar weighs " + barWeight + "kg. Count is for single side."
 				resultEmptyEl.classList.remove("hidden");
 
 				resultSingleEl.classList.add("hidden");
